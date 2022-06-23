@@ -72,8 +72,14 @@ export default function Video (props: VideoProps) {
                     </div>
 
                     <div>
-                        <a href="" className="bg-green-500 text-sm font-bold p-4 uppercase rounded block hover:bg-green-700  transition-colors">Comunidade no discord</a>
-                        <a href="" className="text-sm text-blue-500 font-bold px-6 py-4 mt-4  uppercase rounded block border border-blue-500 hover:bg-blue-500 hover:text-gray-900 transition-colors">Acesse o desafio</a>
+                        <a href="" className="bg-green-500 flex gap-2 items-center text-sm font-bold p-4 uppercase rounded hover:bg-green-700  transition-colors">
+                            <i className="fa-brands fa-discord text-2xl"></i>
+                            Comunidade no discord
+                        </a>
+                        <a href="" className="text-sm text-blue-500  flex gap-2 items-center justify-center font-bold px-6 py-4 mt-4  uppercase rounded border border-blue-500 hover:bg-blue-500 hover:text-gray-900 transition-colors">
+                            <i className="fa-solid fa-bolt text-2xl"></i>
+                            Acesse o desafio
+                        </a>
                     </div>
 
                 </div> 
@@ -92,7 +98,7 @@ export default function Video (props: VideoProps) {
                 <div className="mt-20 gap-8 flex">
                    <a href="" className="bg-gray-700 rounded overflow-hidden flex items-stretch gap-6 hover:bg-gray-600 transition-colors">
                     <div className="bg-green-700 h-full p-6 flex items-center">
-                    <i className="fa-solid fa-file-arrow-down text-4xl"></i>
+                        <i className="fa-solid fa-file-arrow-down text-4xl"></i>
                     </div>
                     <div className="py-6 leading-relaxed">
                         <strong className="text-2xl">Material complementar</strong>
@@ -105,7 +111,7 @@ export default function Video (props: VideoProps) {
                    </a>
                    <a href="" className="bg-gray-700 rounded overflow-hidden flex items-stretch gap-6 hover:bg-gray-600 transition-colors">
                     <div className="bg-green-700 h-full p-6 flex items-center">
-                    <i className="fa-solid fa-file-arrow-down text-4xl"></i>
+                        <i className="fa-solid fa-image text-4xl"></i>
                     </div>
                     <div className="py-6 leading-relaxed">
                         <strong className="text-2xl">Wallpaper Exclusivos</strong>
@@ -121,7 +127,6 @@ export default function Video (props: VideoProps) {
 
 
             </div>
-
         </section>
     )
 }
