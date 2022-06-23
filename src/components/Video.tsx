@@ -1,15 +1,63 @@
 import { DefaultUi, Player, Youtube } from "@vime/react";
 
 import '@vime/core/themes/default.css'
+import { gql, useQuery } from "@apollo/client";
 
-export default function Video () {
+const GET_LESSON_BY_SLUG_QUERY = gql`
+query GEtLessonBySlug ($slug: String) {
+  lesson(where: {slug: $slug}) {
+    title
+    videoId
+    description
+    teacher {
+      avatarURL
+      bio
+      name
+    }
+  }
+}
+`
+
+interface GetLessonBySlugResponse{
+    lesson: {
+        title: string;
+        videoId: string;
+        description: string;
+        teacher: {
+            avatarURL: string;
+            bio: string;
+            name: string;
+        }
+
+    }
+}
+
+interface VideoProps{
+    lessonSlug: string;
+}
+
+export default function Video (props: VideoProps) {
+    const {data} = useQuery<GetLessonBySlugResponse>(GET_LESSON_BY_SLUG_QUERY,{
+        variables: {
+            slug: props.lessonSlug,
+        }
+    })
+
+    if (!data) {
+        return(
+            <div className="flex-1">
+                <p>Carregando...</p> 
+            </div>
+        ) 
+    }
+
     return(
         <section className="flex-1">
 
             <div className="bg-white flex justify-center">
                 <div className="bg-slate-600 w-full h-full max-w-[1100px] max-h-[60vh] aspect-video">
                     <Player>
-                        <Youtube videoId=""/>
+                        <Youtube videoId={data.lesson.videoId}/>
                         <DefaultUi/>
                     </Player>
                 </div>
@@ -19,8 +67,8 @@ export default function Video () {
                 <div className="flex gap-16">
 
                     <div className="flex-1">
-                        <h1 className="font-bold text-2xl">Aula 01 - Criando o projeto e realizando o setup inicial</h1>
-                        <p className="mt-4 leading-relaxed text-gray-200 font-bold ">Nessa aula vamos dar início ao projeto criando a estrutura base da aplicação utilizando ReactJS, Vite e TailwindCSS. Vamos também realizar o setup do nosso projeto no GraphCMS criando as entidades da aplicação e integrando a API GraphQL gerada pela plataforma no nosso front-end utilizando Apollo Client.</p>
+                        <h1 className="font-bold text-2xl">{data.lesson.title}</h1>
+                        <p className="mt-4 leading-relaxed text-gray-200 font-bold ">{data.lesson.description}</p>
                     </div>
 
                     <div>
@@ -32,11 +80,11 @@ export default function Video () {
 
                 <div className="flex gap-4 mt-6">
 
-                    <img src="https://github.com/Luquinhazm.png" alt="" className="rounded-full h-16 border-2 border-blue-500" />
+                    <img src={data.lesson.teacher.avatarURL} alt="" className="rounded-full h-16 border-2 border-blue-500" />
 
                     <div className="flex flex-col">
-                        <strong className="text-2xl ">Lucas Mendes</strong>
-                        <span className="text-sm text-gray-300">Desenvolvedor Front-end</span>
+                        <strong className="text-2xl ">{data.lesson.teacher.name}</strong>
+                        <span className="text-sm text-gray-300">{data.lesson.teacher.bio}</span>
                     </div>
 
                 </div>
