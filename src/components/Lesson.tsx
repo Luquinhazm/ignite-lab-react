@@ -24,7 +24,6 @@ export default function Lesson(props: LessonProps) {
             </span>
 
             <div className="rounded border border-gray-500 p-4 mt-2" >
-                
                 <header className="flex items-center justify-between">
                     
                   {isLessonAvailable ? (  
@@ -44,10 +43,9 @@ export default function Lesson(props: LessonProps) {
 
                 </header>
 
-                <strong className="text-gray-200 mt-5 block">
+                <strong className="text-gray-200 mt-4 block">
                     {props.title}
                 </strong>
-
             </div>
        </a>
     )

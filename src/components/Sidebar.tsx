@@ -48,8 +48,6 @@ console.log(data)
             )
            })} 
         </div>
-
        </aside>
-       
        )
 }
