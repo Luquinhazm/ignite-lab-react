@@ -1,4 +1,4 @@
-import { gql, useMutation } from "@apollo/client";
+import { gql, useMutation, useQuery } from "@apollo/client";
 import { useState, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import Logo from "../components/Logo";
@@ -11,6 +11,22 @@ const  CREATE_INSCRITO_MUTATION = gql`
   }
 }
 `
+const READ_INSCRITO = gql`
+    query IdIscrito  {
+        subscribers (stage: DRAFT) {
+            id
+            email
+  }
+}
+`
+interface responseInscritos{
+    subscribers:{
+        id: string
+        email: string
+    }[]
+   
+}
+
 interface mutationResponse{
     name: string,
     email: string
@@ -24,6 +40,11 @@ export default function InscricaoPage(){
 
     const [createInscrito, {loading}] = useMutation<mutationResponse>(CREATE_INSCRITO_MUTATION)
 
+    const {data} = useQuery<responseInscritos>(READ_INSCRITO)
+
+    
+    
+
     async function handleInscrito(event:FormEvent){
         event?.preventDefault()
        await createInscrito({
@@ -31,9 +52,28 @@ export default function InscricaoPage(){
                 name,
                 email,
             }
-        })
-        navigate('/Inicio')
+        },)
     }
+    
+    function entrar(event:FormEvent){
+        event?.preventDefault()
+        const valueEmail = document.getElementById('#emailInput').value
+        const usuarios = data?.subscribers.map( emails =>{
+          return emails.email
+        })
+
+        if(usuarios?.includes(valueEmail)){
+           navigate("/Inicio")
+        }
+    }
+    
+   
+    
+    
+    // const novoArray = data?.subscribers.map( emails => emails.id )
+
+
+    // console.log(data?.subscribers.map(subscriber => subscriber.email.includes(email)))
 
     return(
         <div className="min-h-screen bg-blur bg-no-repeat bg-cover flex flex-col items-center">
@@ -48,7 +88,7 @@ export default function InscricaoPage(){
 
                 <div className="p-8 bg-gray-700 border border-gray-500 rounded">
                     <strong className="text-2xl mb-6 block">Inscreva-se gratuitamente</strong>
-                    <form onSubmit={handleInscrito} className="flex flex-col gap-2 w-full ">
+                    <form  className="flex flex-col gap-2 w-full ">
                         <input 
                             className="bg-gray-900 rounded px-5 h-14 "
                             type="text" 
@@ -62,10 +102,11 @@ export default function InscricaoPage(){
                             type="email" 
                             placeholder="Digite seu e-mail" 
                             onChange={event=> setEmail(event.target.value)}
+                            id='#emailInput'
                             />
 
                         <button 
-                        type="submit" 
+                        onClick={entrar}
                         disabled={loading}
                         className="mt-4 bg-green-500 uppercase py-4 rounded font-bold text-sm hover:bg-green-700 transition-colors disabled:opacity-50 "
                         >

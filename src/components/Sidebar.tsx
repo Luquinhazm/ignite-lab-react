@@ -25,10 +25,10 @@ interface GetLessonsQueryResponse {
 }
 
 
+
+
 export default function Sidebar () {
 const {data} = useQuery<GetLessonsQueryResponse>(GET_LESSONS_QUERY)
-
-console.log(data)
 
     return(
        <aside className="w-[348px] bg-gray-700 p-6 border-l border-gray-600 ">
