@@ -80,7 +80,7 @@ export default function InscricaoPage(){
 
             </div>
 
-            <img src="/src/assets/group-code.png" alt="" className="mt-10" />
+            <img src="../../src/assets/group-code.png" alt="" className="mt-10" />
         </div>
     )
 }
