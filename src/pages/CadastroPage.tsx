@@ -1,6 +1,6 @@
 import { gql, useMutation } from "@apollo/client";
 import { FormEvent, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Logo from "../components/Logo";
 import imgURL from "../../src/assets/group-code.png"
 
@@ -43,7 +43,10 @@ export default function CadastroPage(){
     <div className="min-h-screen bg-blur bg-no-repeat bg-cover flex flex-col items-center">
         <div className="w-full max-w-[1100px] flex items-center justify-between mt-20 mx-auto">
             <div className="max-w-[640px]" >
-                <Logo/>
+                <Link to="/">
+                    <Logo/>
+                </Link>
+                
                 <h1 className="text-[2.5rem] mt-8 leading-tight">Construa uma <strong className="text-blue-500">aplicação completa</strong>, do zero, <strong className="text-blue-500">com React</strong> </h1>
 
                 <p className="leading-relaxed text-gray-200 mt-4">Em apenas uma semana você vai dominar na prática uma das tecnologias mais utilizadas e com alta demanda para acessar as melhores oportunidades do mercado</p>
