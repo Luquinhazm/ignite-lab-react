@@ -1,16 +1,9 @@
-import { gql, useMutation, useQuery } from "@apollo/client";
+import { gql, useQuery } from "@apollo/client";
 import { useState, FormEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../components/Logo";
 import imgURL from "../../src/assets/group-code.png"
 
-const  CREATE_INSCRITO_MUTATION = gql`
-    mutation CreateInscrito ($name:String!, $email: String!) {
-        createSubscriber(data: {name: $name, email: $email}) {
-            id
-  }
-}
-`
 const READ_INSCRITO = gql`
     query IdIscrito  {
         subscribers (stage: DRAFT) {
@@ -26,31 +19,12 @@ interface responseInscritos{
     }[]
 }
 
-interface mutationResponse{
-    name: string,
-    email: string
-}
-
 export default function InscricaoPage(){
     const navigate = useNavigate()
-
-    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
-
-    const [createInscrito, {loading}] = useMutation<mutationResponse>(CREATE_INSCRITO_MUTATION)
 
     const {data} = useQuery<responseInscritos>(READ_INSCRITO)  
 
-    async function handleInscrito(event:FormEvent){
-        event?.preventDefault()
-       await createInscrito({
-            variables:{
-                name,
-                email,
-            }
-        },)
-    }
-    
     function entrar(event:FormEvent){
         event?.preventDefault()
         const valueEmail = document.getElementById('#emailInput').value
@@ -59,7 +33,7 @@ export default function InscricaoPage(){
         })
 
         if(usuarios?.includes(valueEmail)){
-           navigate("/Inicio")
+           navigate("/Inicio/lesson/abertura-do-evento-ignite-labs")
         }
     }
 
@@ -69,7 +43,6 @@ export default function InscricaoPage(){
                 <div className="max-w-[640px]" >
                     <Logo/>
                     <h1 className="text-[2.5rem] mt-8 leading-tight">Construa uma <strong className="text-blue-500">aplicação completa</strong>, do zero, <strong className="text-blue-500">com React</strong> </h1>
-
                     <p className="leading-relaxed text-gray-200 mt-4">Em apenas uma semana você vai dominar na prática uma das tecnologias mais utilizadas e com alta demanda para acessar as melhores oportunidades do mercado</p>
                 </div>
                 <div className="p-8 bg-gray-700 border border-gray-500 rounded">
@@ -82,20 +55,16 @@ export default function InscricaoPage(){
                             onChange={event=> setEmail(event.target.value)}
                             id='#emailInput'
                             />
-
                             <button 
                                 onClick={entrar}
-                                disabled={loading}
                                 className="mt-4 bg-green-500 uppercase py-4 rounded font-bold text-sm hover:bg-green-700 transition-colors disabled:opacity-50 "
                                 >
                                 Entrar
                             </button>
-
                         <Link to="/cadastro" className="text-sm text-gray-200 text-center mt-2 opacity-50 cursor-pointer">Inscreva-se gratuitamente</Link>
                     </form>
                 </div>
             </div>
-
             <img src={imgURL} alt="" className="mt-10" />
         </div>
     )

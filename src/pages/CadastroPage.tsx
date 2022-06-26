@@ -2,6 +2,7 @@ import { gql, useMutation } from "@apollo/client";
 import { FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Logo from "../components/Logo";
+import imgURL from "../../src/assets/group-code.png"
 
 const  CREATE_INSCRITO_MUTATION = gql`
     mutation CreateInscrito ($name:String!, $email: String!) {
@@ -76,6 +77,7 @@ export default function CadastroPage(){
                     </form>
                 </div>
             </div>
+            <img src={imgURL} alt="" className="mt-10" />
         </div>
     )
 }
