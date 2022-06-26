@@ -27,12 +27,12 @@ export default function InscricaoPage(){
 
     function entrar(event:FormEvent){
         event?.preventDefault()
-        const valueEmail = document.getElementById('#emailInput').value
+        const valueEmail = document.getElementById('#emailInput') as HTMLInputElement
         const usuarios = data?.subscribers.map( emails =>{
           return emails.email
         })
 
-        if(usuarios?.includes(valueEmail)){
+        if(usuarios?.includes(valueEmail.value)){
            navigate("/Inicio/lesson/abertura-do-evento-ignite-labs")
         }
     }
