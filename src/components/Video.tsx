@@ -63,14 +63,12 @@ export default function Video (props: VideoProps) {
                 </div>
             </div>
 
-            <div className="p-8 max-w-[1100px] mx-auto">
-                <div className="flex gap-16">
-
+            <div className="p-8 max-w-[1100px] mx-auto ">
+                <div className="flex gap-16 md:flex-wrap " >
                     <div className="flex-1">
                         <h1 className="font-bold text-2xl">{data.lesson.title}</h1>
                         <p className="mt-4 leading-relaxed text-gray-200 font-bold ">{data.lesson.description}</p>
                     </div>
-
                     <div>
                         <a href="" className="bg-green-500 flex gap-2 items-center text-sm font-bold p-4 uppercase rounded hover:bg-green-700  transition-colors">
                             <i className="fa-brands fa-discord text-2xl"></i>
@@ -81,7 +79,6 @@ export default function Video (props: VideoProps) {
                             Acesse o desafio
                         </a>
                     </div>
-
                 </div> 
 
                 <div className="flex gap-4 mt-6">
@@ -95,20 +92,20 @@ export default function Video (props: VideoProps) {
 
                 </div>
 
-                <div className="mt-20 gap-8 flex">
-                   <a href="" className="bg-gray-700 rounded overflow-hidden flex items-stretch gap-6 hover:bg-gray-600 transition-colors">
-                    <div className="bg-green-700 h-full p-6 flex items-center">
-                        <i className="fa-solid fa-file-arrow-down text-4xl"></i>
-                    </div>
-                    <div className="py-6 leading-relaxed">
-                        <strong className="text-2xl">Material complementar</strong>
-                        <p className="text-sm text-gray-200 mt-2">Acesse o material complementar para acelerar o seu desenvolvimento</p>
-                    </div>
-                    <div className="h-full p-6 flex items-center">
-                    <i className="fa-solid fa-chevron-right text-2xl "></i>
-                    </div>
+                <div className="mt-20 gap-8 flex md:flex-wrap">
+                    <a href="" className="bg-gray-700 rounded overflow-hidden flex items-stretch gap-6 hover:bg-gray-600 transition-colors">
+                        <div className="bg-green-700 h-full p-6 flex items-center">
+                            <i className="fa-solid fa-file-arrow-down text-4xl"></i>
+                        </div>
+                        <div className="py-6 leading-relaxed">
+                            <strong className="text-2xl">Material complementar</strong>
+                            <p className="text-sm text-gray-200 mt-2">Acesse o material complementar para acelerar o seu desenvolvimento</p>
+                        </div>
+                        <div className="h-full p-6 flex items-center">
+                        <i className="fa-solid fa-chevron-right text-2xl "></i>
+                        </div>
+                    </a>
 
-                   </a>
                    <a href="" className="bg-gray-700 rounded overflow-hidden flex items-stretch gap-6 hover:bg-gray-600 transition-colors">
                     <div className="bg-green-700 h-full p-6 flex items-center">
                         <i className="fa-solid fa-image text-4xl"></i>
@@ -120,12 +117,8 @@ export default function Video (props: VideoProps) {
                     <div className="h-full p-6 flex items-center">
                     <i className="fa-solid fa-chevron-right text-2xl "></i>
                     </div>
-
                    </a>
                 </div>
-                
-
-
             </div>
         </section>
     )

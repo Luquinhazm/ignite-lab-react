@@ -11,7 +11,6 @@ const  CREATE_INSCRITO_MUTATION = gql`
   }
 }
 `
-
 interface mutationResponse{
     name: string,
     email: string
@@ -27,17 +26,14 @@ export default function InscricaoPage(){
 
     async function handleInscrito(event:FormEvent){
         event?.preventDefault()
-
        await createInscrito({
             variables:{
                 name,
                 email,
             }
         })
-
         navigate('/Inicio')
     }
-    
 
     return(
         <div className="min-h-screen bg-blur bg-no-repeat bg-cover flex flex-col items-center">
