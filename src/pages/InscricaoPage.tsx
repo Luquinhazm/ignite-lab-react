@@ -2,6 +2,7 @@ import { gql, useMutation } from "@apollo/client";
 import { useState, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import Logo from "../components/Logo";
+import imgURL from "../../src/assets/group-code.png"
 
 const  CREATE_INSCRITO_MUTATION = gql`
     mutation CreateInscrito ($name:String!, $email: String!) {
@@ -80,7 +81,7 @@ export default function InscricaoPage(){
 
             </div>
 
-            <img src="../../src/assets/group-code.png" alt="" className="mt-10" />
+            <img src={imgURL} alt="" className="mt-10" />
         </div>
     )
 }
