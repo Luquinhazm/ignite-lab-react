@@ -40,10 +40,7 @@ export default function InscricaoPage(){
 
     const [createInscrito, {loading}] = useMutation<mutationResponse>(CREATE_INSCRITO_MUTATION)
 
-    const {data} = useQuery<responseInscritos>(READ_INSCRITO)
-
-    
-    
+    const {data} = useQuery<responseInscritos>(READ_INSCRITO)  
 
     async function handleInscrito(event:FormEvent){
         event?.preventDefault()
@@ -66,14 +63,6 @@ export default function InscricaoPage(){
            navigate("/Inicio")
         }
     }
-    
-   
-    
-    
-    // const novoArray = data?.subscribers.map( emails => emails.id )
-
-
-    // console.log(data?.subscribers.map(subscriber => subscriber.email.includes(email)))
 
     return(
         <div className="min-h-screen bg-blur bg-no-repeat bg-cover flex flex-col items-center">
