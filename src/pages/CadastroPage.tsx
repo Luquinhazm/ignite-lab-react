@@ -41,7 +41,7 @@ export default function CadastroPage(){
 
     return(
     <div className="min-h-screen bg-blur bg-no-repeat bg-cover flex flex-col items-center">
-        <div className="w-full max-w-[1100px] flex items-center justify-between mt-20 mx-auto">
+        <div className="w-full max-w-[1100px] flex items-center justify-between mt-20 mx-auto flex-wrap p-3 lg:justify-center">
             <div className="max-w-[640px]" >
                 <Link to="/">
                     <Logo/>
@@ -51,7 +51,7 @@ export default function CadastroPage(){
 
                 <p className="leading-relaxed text-gray-200 mt-4">Em apenas uma semana você vai dominar na prática uma das tecnologias mais utilizadas e com alta demanda para acessar as melhores oportunidades do mercado</p>
             </div>
-            <div className="p-8 bg-gray-700 border border-gray-500 rounded">
+            <div className="p-8 bg-gray-700 border border-gray-500 rounded lg:mt-6">
                 <strong className="text-2xl mb-6 block">Inscreva-se gratuitamente</strong>
                 <form 
                 onSubmit={handleInscrito} 
