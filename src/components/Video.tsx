@@ -63,7 +63,7 @@ export default function Video (props: VideoProps) {
                 </div>
             </div>
 
-            <div className="p-8 max-w-[1100px] mx-auto ">
+            <div className="p-8 max-w-[1100px] mx-auto md:p-2 ">
                 <div className="flex gap-16 md:flex-wrap " >
                     <div className="flex-1">
                         <h1 className="font-bold text-2xl">{data.lesson.title}</h1>
@@ -92,7 +92,7 @@ export default function Video (props: VideoProps) {
 
                 </div>
 
-                <div className="mt-20 gap-8 flex md:flex-wrap">
+                <div className="mt-20 gap-8 flex md:flex-wrap md:w-80 md:mx-auto">
                     <a href="" className="bg-gray-700 rounded overflow-hidden flex items-stretch gap-6 hover:bg-gray-600 transition-colors">
                         <div className="bg-green-700 h-full p-6 flex items-center">
                             <i className="fa-solid fa-file-arrow-down text-4xl"></i>

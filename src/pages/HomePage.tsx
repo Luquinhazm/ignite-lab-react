@@ -12,7 +12,7 @@ export default function HomePage(){
     return(
       <div className="flex flex-col min-h-screen">
         <Header/>
-        <main className="flex flex-1 flex-wrap">
+        <main className="flex flex-1 lg:flex-wrap">
             {slug ? <Video lessonSlug={slug}/> : <div className="flex-1"></div>}
             <Sidebar/>
         </main>
